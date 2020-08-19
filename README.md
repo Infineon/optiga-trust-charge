@@ -13,6 +13,11 @@
 
 The OPTIGA™ Trust Charge is an **authentication** security solution based on a secure microntroller. Each device is shipped with a unique elliptic-curve keypair and a corresponding WPC Qi Authentication certificate chain.
 
+The main purpose of this software framework is to make an integration of the secure element into WPC Qi 1.3 Authentication Protocol implementation easier.
+The figure below depicts what this solution offers, and what other components of the wireless charging system are required.
+
+![](https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_charge_integration_overview.png)
+
 ### Key Features and Benefits
 
 * High-end security controller
@@ -39,7 +44,6 @@ The OPTIGA™ Trust Charge is an **authentication** security solution based on a
 ### Examples
 
 * [Getting Started Guide (Wiki)]()
-* [WPC Qi Authentication Test vectors (Wiki)]()
 
 ### Software Framework overview
 
@@ -53,9 +57,9 @@ External links, open in the same tab.
 For high level description and some important excerpts from the documentation please refer to [Wiki page](https://github.com/Infineon/optiga-trust-charge/wiki)
 
 Other downloadable PDF documents can be found below:
-1. [OPTIGA™ Trust Charge Datasheet v1.00] (PDF)
-2. [OPTIGA™ Trust Charge Solution Reference Manual v1.00] (PDF)
-4. [Infineon I2C protocol specification v2.02] (PDF)
+1. [OPTIGA™ Trust Charge Datasheet v1.30](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Datasheet_v1.30.pdf) (PDF)
+2. [OPTIGA™ Trust Charge Solution Reference Manual v1.00](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf) (PDF)
+4. [Infineon I2C protocol specification v2.02](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/Infineon_I2C_Protocol_v2.02.pdf) (PDF)
 
 ### Board assembly recommendations
 
