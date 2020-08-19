@@ -5,11 +5,7 @@
 <a href="https://github.com/Infineon/optiga-trust-charge#get-started"><img src="https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_x_gitrepo_tile_3.jpg" width="192" height="144"></a>
 <a href="https://github.com/Infineon/optiga-trust-charge#documentation"><img src="https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_x_gitrepo_tile_4.jpg" width="192" height="144"></a> <a href="https://github.com/Infineon/optiga-trust-charge/wiki/Crypto-Performance"><img src="https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_x_gitrepo_tile_5.jpg" width="192" height="144"></a>  <a href="https://github.com/Infineon/optiga-trust-charge/wiki/Trust-Qi-Crypt-API"><img src="https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_x_gitrepo_tile_6.jpg" width="192" height="144"></a>
 
-## Security Chip
-
-<img src="https://github.com/Infineon/Assets/raw/master/Pictures/lowres-OPTIGA%20Trust%20Charge%2010-2%20plain.tif.png" width="300" >
-
-### Description
+## Description
 
 The OPTIGA™ Trust Charge is an **authentication** security solution based on a secure microntroller. Each device is shipped with a unique elliptic-curve keypair and a corresponding WPC Qi Authentication certificate chain.
 
@@ -18,7 +14,7 @@ The figure below depicts what this solution offers, and what other components of
 
 ![](https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_charge_integration_overview.png)
 
-### Key Features and Benefits
+## Key Features and Benefits
 
 * High-end security controller
 * **Wireless Power Consortium(WPC) Qi Authentication**
@@ -39,7 +35,12 @@ The figure below depicts what this solution offers, and what other components of
 
 ## Get Started
 
-* [OPTIGA™ Trust Charge Evaluation Kit (Wiki)]()
+First steps can include the following:
+1. Getting Started Guide for OPTIGA™ Trust Charge. Use one of [OPTIGA™ Trust Charge Evaluation Kits (link is pending)]() and this [guidance](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Getting_Started_Guide_v1.30.pdf) for this
+2. Run test vectors for the WPC Qi 1.3 Authentication Protocol. You can take the same Evalation Kit, and the dedicated [Application Note](https://github.com/Infineon/wpcqi-optiga-trust-charge)
+3. Exercise the Porting Guide to bring this Software Framework to your target Wireless Charging System
+4. Follow a defined process to get unique samples. Please talk with your Distribution or Infineon Contact.
+
 
 ### Examples
 
