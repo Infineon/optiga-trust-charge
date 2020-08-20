@@ -41,11 +41,6 @@ First steps can include the following:
 3. Exercise the [Porting Guide](https://github.com/Infineon/optiga-trust-charge/tree/master/pal) to bring this Software Framework to your target Wireless Charging System
 4. Follow a defined process to get unique samples. Please contact for this either your distribution channel or directly Infineon.
 
-
-### Examples
-
-* [Getting Started Guide (Wiki)]()
-
 ### Software Framework overview
 
 ### Evaluation and developement kits
