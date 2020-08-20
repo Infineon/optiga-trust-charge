@@ -21,3 +21,9 @@
 # Other helping information
 
 * [Crypo Performance](Crypo_Performance.md)
+* API Description:
+  * [Crypt API](API_Crypt.md)
+  * [Util API](API_Util.md)
+* [Protected Update for Data and Certificate Objects](Protected_Update_for_Data_Objects.md)
+* [Data format examples](https://github.com/Infineon/optiga-trust-charge/blob/master/documents/Data_format_examples.md). How a signature or a public key accepted by the chip look like.
+* [Error Codes](Error_Codes.md). If you see an error returnd from the host library, it might be one of the mentioned in this document.
