@@ -37,7 +37,7 @@ The figure below depicts what this solution offers, and what other components of
 
 First steps can include the following:
 1. Getting Started Guide for OPTIGA™ Trust Charge. Use one of [OPTIGA™ Trust Charge Evaluation Kits (link is pending)]() and this [guidance](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Getting_Started_Guide_v1.30.pdf) for this
-2. Run test vectors for the WPC Qi 1.3 Authentication Protocol. You can take the same Evalation Kit, and the dedicated [Application Note](https://github.com/Infineon/wpcqi-optiga-trust-charge)
+2. Run test vectors for the WPC Qi 1.3 Authentication Protocol. You can take the same Evaluation Kit, and the dedicated [Application Note](https://github.com/Infineon/wpcqi-optiga-trust-charge)
 3. Exercise the [Porting Guide](https://github.com/Infineon/optiga-trust-charge/tree/master/pal) to bring this Software Framework to your target Wireless Charging System
 4. Follow a defined process to get unique samples. Please contact for this either your distribution channel or directly Infineon.
 
