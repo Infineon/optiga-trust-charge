@@ -7,9 +7,9 @@
 
 ## Description
 
-The OPTIGA™ Trust Charge is an **authentication** security solution based on a secure microntroller. Each device is shipped with a unique elliptic-curve keypair and a corresponding WPC Qi Authentication certificate chain.
+The OPTIGA™ Trust Charge is an **authentication** security solution based on a secure microntroller. Each device is shipped with a unique end-device elliptic-curve keypair and a corresponding certificate chain for WPC Qi 1.3 Authentication.
 
-The main purpose of this software framework is to make an integration of the secure element into WPC Qi 1.3 Authentication Protocol implementation easier.
+The main purpose of this software framework is to support an integration of the secure element into WPC Qi 1.3 Authentication Protocol on the target wireless charging system.
 The figure below depicts what this solution offers, and what other components of the wireless charging system are required.
 
 ![](https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_charge_integration_overview.png)
@@ -17,7 +17,7 @@ The figure below depicts what this solution offers, and what other components of
 ## Key Features and Benefits
 
 * High-end security controller
-* **Wireless Power Consortium(WPC) Qi Authentication**
+* **Wireless Power Consortium(WPC) Qi 1.3 Authentication**
 * Common Criteria Certified EAL6+ (high) hardware
 * Turnkey solution
 * Compliant with the USB Type-C™ Authentication standard
