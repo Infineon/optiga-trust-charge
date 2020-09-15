@@ -10,6 +10,7 @@
 The OPTIGA™ Trust Charge is an **authentication** security solution based on a secure microntroller. Each device is shipped with a unique end-device elliptic-curve keypair and a corresponding certificate chain for WPC Qi 1.3 Authentication.
 
 The main purpose of this software framework is to support an integration of the secure element into WPC Qi 1.3 Authentication Protocol on the target wireless charging system.
+
 The figure below depicts what this solution offers, and what other components of the wireless charging system are required.
 
 ![](https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_charge_integration_overview.png)
@@ -37,9 +38,8 @@ The figure below depicts what this solution offers, and what other components of
 
 First steps can include the following:
 1. Getting Started Guide for OPTIGA™ Trust Charge. Use one of [OPTIGA™ Trust Charge Evaluation Kits (link is pending)]() and this [guidance](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Getting_Started_Guide_v1.30.pdf) for this
-2. Run test vectors for the WPC Qi 1.3 Authentication Protocol. You can take the same Evaluation Kit, and the dedicated [Application Note](https://github.com/Infineon/wpcqi-optiga-trust-charge)
-3. Exercise the [Porting Guide](https://github.com/Infineon/optiga-trust-charge/tree/master/pal) to bring this Software Framework to your target Wireless Charging System
-4. Follow a defined process to get unique samples. Please contact for this either your distribution channel or directly Infineon.
+2. Exercise the [Porting Guide](https://github.com/Infineon/optiga-trust-charge/tree/master/pal) to bring this Software Framework to your target Wireless Charging System
+3. Follow a defined process to get unique samples. Please contact for this either your distribution channel or directly Infineon.
 
 ## Documentation
 
