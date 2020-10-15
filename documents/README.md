@@ -21,6 +21,7 @@
 # Other helping information
 
 * [Crypo Performance](Crypo_Performance.md)
+* [Code Footprint](Code_Footprint.md)
 * API Description:
   * [Crypt API](API_Crypt.md)
   * [Util API](API_Util.md)
