@@ -85,6 +85,9 @@ typedef struct mbedtls_x509_crt
 
     unsigned char ns_cert_type; /**< Optional Netscape certificate type extension value: See the values in x509.h */
 
+    mbedtls_x509_buf wpcqi_auth_policy; /**< Optional WPC QI Auth Policy extension value: See the values in x509.h */
+    mbedtls_x509_buf wpcqi_auth_rsid; /**< Optional WPC QI AUth RSID extension value: See the values in x509.h */
+
     mbedtls_x509_buf sig;               /**< Signature: hash of the tbs part signed with the private key. */
     mbedtls_md_type_t sig_md;           /**< Internal representation of the MD algorithm of the signature algorithm, e.g. MBEDTLS_MD_SHA256 */
     mbedtls_pk_type_t sig_pk;           /**< Internal representation of the Public Key algorithm of the signature algorithm, e.g. MBEDTLS_PK_RSA */

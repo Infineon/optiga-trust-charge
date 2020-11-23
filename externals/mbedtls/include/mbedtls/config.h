@@ -987,7 +987,7 @@
  *      MBEDTLS_TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256
  *      MBEDTLS_TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384
  */
-#define MBEDTLS_KEY_EXCHANGE_ECDH_ECDSA_ENABLED
+//#define MBEDTLS_KEY_EXCHANGE_ECDH_ECDSA_ENABLED
 
 /**
  * \def MBEDTLS_KEY_EXCHANGE_ECDH_RSA_ENABLED
@@ -1816,7 +1816,7 @@
  *
  * PEM_PARSE uses AES for decrypting encrypted keys.
  */
-#define MBEDTLS_AES_C
+//#define MBEDTLS_AES_C
 
 /**
  * \def MBEDTLS_ARC4_C
@@ -1872,7 +1872,7 @@
  *          library/x509write_crt.c
  *          library/x509write_csr.c
  */
-//#define MBEDTLS_ASN1_WRITE_C
+#define MBEDTLS_ASN1_WRITE_C
 
 /**
  * \def MBEDTLS_BASE64_C
@@ -2031,7 +2031,7 @@
  * This module enables the AES-CCM ciphersuites, if other requisites are
  * enabled as well.
  */
-#define MBEDTLS_CCM_C
+//#define MBEDTLS_CCM_C
 
 /**
  * \def MBEDTLS_CERTS_C
@@ -2075,7 +2075,7 @@
  *
  * Uncomment to enable generic cipher wrappers.
  */
-#define MBEDTLS_CIPHER_C
+//#define MBEDTLS_CIPHER_C
 
 /**
  * \def MBEDTLS_CMAC_C
@@ -2184,7 +2184,7 @@
  *
  * Requires: MBEDTLS_ECP_C
  */
-#define MBEDTLS_ECDH_C
+//#define MBEDTLS_ECDH_C
 
 /**
  * \def MBEDTLS_ECDSA_C
@@ -2199,7 +2199,7 @@
  *
  * Requires: MBEDTLS_ECP_C, MBEDTLS_ASN1_WRITE_C, MBEDTLS_ASN1_PARSE_C
  */
-//#define MBEDTLS_ECDSA_C
+#define MBEDTLS_ECDSA_C
 
 /**
  * \def MBEDTLS_ECJPAKE_C

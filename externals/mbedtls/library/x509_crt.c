@@ -538,6 +538,54 @@ static int x509_get_ns_cert_type( unsigned char **p,
     return( 0 );
 }
 
+static int x509_get_wpcqi_auth_policy( unsigned char **p,
+                                       const unsigned char *end,
+									   mbedtls_x509_buf *policy)
+{
+    int ret;
+
+    if( *p == end )
+        return( 0 );
+
+    policy->tag = **p;
+
+    /*
+     * PolicyFlags ::= SEQUENCE {
+     *      PolicyFlags       OCTET STRING (0 .. 3)
+     */
+    if( ( ret = mbedtls_asn1_get_tag( p, end, &policy->len, MBEDTLS_ASN1_OCTET_STRING ) ) != 0 )
+        return( MBEDTLS_ERR_X509_INVALID_EXTENSIONS + ret );
+
+    policy->p = *p;
+    *p += policy->len;
+
+    return( 0 );
+}
+
+static int x509_get_wpcqi_auth_rsid( unsigned char **p,
+                                       const unsigned char *end,
+									   mbedtls_x509_buf *rsid)
+{
+    int ret;
+
+    if( *p == end )
+        return( 0 );
+
+    rsid->tag = **p;
+
+    /*
+     * RSID ::= SEQUENCE {
+     *      RSID       OCTET STRING (0 .. 8)
+     */
+    if( ( ret = mbedtls_asn1_get_tag( p, end, &rsid->len, MBEDTLS_ASN1_OCTET_STRING ) ) != 0 )
+        return( MBEDTLS_ERR_X509_INVALID_EXTENSIONS + ret );
+
+    rsid->p = *p;
+    *p += rsid->len;
+
+    return( 0 );
+}
+
 static int x509_get_key_usage( unsigned char **p,
                                const unsigned char *end,
                                unsigned int *key_usage)
@@ -811,6 +859,18 @@ static int x509_get_crt_ext( unsigned char **p,
             /* Parse netscape certificate type */
             if( ( ret = x509_get_ns_cert_type( p, end_ext_octet,
                     &crt->ns_cert_type ) ) != 0 )
+                return( ret );
+            break;
+        case MBEDTLS_X509_EXT_WPCQI_RSID:
+            /* Parse WPC QI AUTH RSID */
+            if( ( ret = x509_get_wpcqi_auth_rsid( p, end_ext_octet,
+                    &crt->wpcqi_auth_rsid ) ) != 0 )
+                return( ret );
+            break;
+        case MBEDTLS_X509_EXT_WPCQI_AUTH_POLICY:
+            /* Parse WPC QI AUTH Policy*/
+            if( ( ret = x509_get_wpcqi_auth_policy( p, end_ext_octet,
+                    &crt->wpcqi_auth_policy ) ) != 0 )
                 return( ret );
             break;
 

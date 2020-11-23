@@ -278,6 +278,14 @@ static const oid_x509_ext_t oid_x509_ext[] =
         { ADD_LEN( MBEDTLS_OID_NS_CERT_TYPE ),         "id-netscape-certtype",     "Netscape Certificate Type" },
         MBEDTLS_X509_EXT_NS_CERT_TYPE,
     },
+	{
+        { ADD_LEN( "\x67\x81\x7F\x01\x02" ),      "id-wpc-qi-auth-rsid",     "WPC QI Auth RSID" },
+		MBEDTLS_X509_EXT_WPCQI_RSID,
+	},
+	{
+        { ADD_LEN( "\x67\x81\x7F\x01\x01" ),   "id-wpc-qi-policy",     "WPC QI Auth Policy" },
+		MBEDTLS_X509_EXT_WPCQI_AUTH_POLICY,
+	},
     {
         { NULL, 0, NULL, NULL },
         0,

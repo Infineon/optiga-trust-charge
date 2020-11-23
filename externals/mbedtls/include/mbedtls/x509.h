@@ -161,6 +161,9 @@
 
 #define MBEDTLS_X509_EXT_NS_CERT_TYPE                (1 << 16)
 
+#define MBEDTLS_X509_EXT_WPCQI_RSID                  (1 << 17)
+#define MBEDTLS_X509_EXT_WPCQI_AUTH_POLICY           (1 << 18)
+
 /*
  * Storage format identifiers
  * Recognized formats: PEM and DER

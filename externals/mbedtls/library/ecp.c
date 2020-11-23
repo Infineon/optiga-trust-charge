@@ -787,6 +787,113 @@ cleanup:
     return( ret );
 }
 
+int mbedtls_ecp_decompress( const mbedtls_ecp_group *grp, const unsigned char *input, size_t ilen,
+								   unsigned char *output, size_t *olen, size_t osize )
+{
+    int ret;
+    size_t plen;
+    mbedtls_mpi r;
+    mbedtls_mpi x;
+    mbedtls_mpi n;
+
+    plen = mbedtls_mpi_size( &grp->P );
+
+    *olen = 2 * plen + 1;
+
+    if( osize < *olen )
+        return( MBEDTLS_ERR_ECP_BUFFER_TOO_SMALL );
+
+    if( ilen != plen + 1 )
+        return( MBEDTLS_ERR_ECP_BAD_INPUT_DATA );
+
+    if( input[0] != 0x02 && input[0] != 0x03 )
+        return( MBEDTLS_ERR_ECP_BAD_INPUT_DATA );
+
+    // output will consist of 0x04|X|Y
+    memcpy( output, input, ilen );
+    output[0] = 0x04;
+
+    mbedtls_mpi_init( &r );
+    mbedtls_mpi_init( &x );
+    mbedtls_mpi_init( &n );
+
+    // x <= input
+    MBEDTLS_MPI_CHK( mbedtls_mpi_read_binary( &x, input + 1, plen ) );
+
+    // r = x^2
+    MBEDTLS_MPI_CHK( mbedtls_mpi_mul_mpi( &r, &x, &x ) );
+
+    // r = x^2 + a
+    // AY: r = r - 3
+    if( grp->A.p == NULL ) {
+        // Special case where a is -3
+        MBEDTLS_MPI_CHK( mbedtls_mpi_sub_int( &r, &r, 3 ) );
+    } else {
+        MBEDTLS_MPI_CHK( mbedtls_mpi_add_mpi( &r, &r, &grp->A ) );
+    }
+
+    // r = x^3 + ax
+    // AY: r = r * x
+    MBEDTLS_MPI_CHK( mbedtls_mpi_mul_mpi( &r, &r, &x ) );
+
+    // r = x^3 + ax + b
+    // AY: r = r * b
+    /*
+     * static const mbedtls_mpi_uint secp256r1_b[] = {
+		BYTES_TO_T_UINT_8( 0x4B, 0x60, 0xD2, 0x27, 0x3E, 0x3C, 0xCE, 0x3B ),
+		BYTES_TO_T_UINT_8( 0xF6, 0xB0, 0x53, 0xCC, 0xB0, 0x06, 0x1D, 0x65 ),
+		BYTES_TO_T_UINT_8( 0xBC, 0x86, 0x98, 0x76, 0x55, 0xBD, 0xEB, 0xB3 ),
+		BYTES_TO_T_UINT_8( 0xE7, 0x93, 0x3A, 0xAA, 0xD8, 0x35, 0xC6, 0x5A ),
+	};
+     */
+    MBEDTLS_MPI_CHK( mbedtls_mpi_add_mpi( &r, &r, &grp->B ) );
+
+    // Calculate quare root of r over finite field P:
+    //   r = sqrt(x^3 + ax + b) = (x^3 + ax + b) ^ ((P + 1) / 4) (mod P)
+
+    // n = P + 1
+    // AY: n = p + 1
+    /*
+     * static const mbedtls_mpi_uint secp256r1_p[] = {
+		BYTES_TO_T_UINT_8( 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF ),
+		BYTES_TO_T_UINT_8( 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00 ),
+		BYTES_TO_T_UINT_8( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ),
+		BYTES_TO_T_UINT_8( 0x01, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF ),
+	};
+     */
+    MBEDTLS_MPI_CHK( mbedtls_mpi_add_int( &n, &grp->P, 1 ) );
+
+    // n = (P + 1) / 4
+    // AY: n = n / 2
+    MBEDTLS_MPI_CHK( mbedtls_mpi_shift_r( &n, 2 ) );
+
+    // r ^ ((P + 1) / 4) (mod p)
+    // Sliding-window exponentiation: X = A^E mod N  (HAC 14.85)
+    // mbedtls_mpi *X, const mbedtls_mpi *A, const mbedtls_mpi *E, const mbedtls_mpi *N, mbedtls_mpi *_RR
+    // AY: r = (r ^ n) mod p
+    MBEDTLS_MPI_CHK( mbedtls_mpi_exp_mod( &r, &r, &n, &grp->P, NULL ) );
+
+    // Select solution that has the correct "sign" (equals odd/even solution in finite group)
+    // (input == 3): 0 == r[0] & 0x01
+    //                  -> True: r = p - r
+    // (input == 2): 1 ==  r[0] & 0x01
+    //				    -> True: r = p - r
+    if( (input[0] == 0x03) != mbedtls_mpi_get_bit( &r, 0 ) ) {
+        // r = p - r
+        MBEDTLS_MPI_CHK( mbedtls_mpi_sub_mpi( &r, &grp->P, &r ) );
+    }
+
+    // y => output
+    ret = mbedtls_mpi_write_binary( &r, output + 1 + plen, plen );
+
+cleanup:
+    mbedtls_mpi_free( &r );
+    mbedtls_mpi_free( &x );
+    mbedtls_mpi_free( &n );
+
+    return( ret );
+}
+
 /*
  * Import a point from unsigned binary data (SEC1 2.3.4)
  */
@@ -796,16 +903,20 @@ int mbedtls_ecp_point_read_binary( const mbedtls_ecp_group *grp,
 {
     int ret;
     size_t plen;
+    uint8_t dec_buf[68];
+    size_t dsize = 68;
+    const uint8_t* _buf = buf;
+    size_t _ilen = ilen;
     ECP_VALIDATE_RET( grp != NULL );
     ECP_VALIDATE_RET( pt  != NULL );
     ECP_VALIDATE_RET( buf != NULL );
 
-    if( ilen < 1 )
+    if( _ilen < 1 )
         return( MBEDTLS_ERR_ECP_BAD_INPUT_DATA );
 
     if( buf[0] == 0x00 )
     {
-        if( ilen == 1 )
+        if( _ilen == 1 )
             return( mbedtls_ecp_set_zero( pt ) );
         else
             return( MBEDTLS_ERR_ECP_BAD_INPUT_DATA );
@@ -814,13 +925,18 @@ int mbedtls_ecp_point_read_binary( const mbedtls_ecp_group *grp,
     plen = mbedtls_mpi_size( &grp->P );
 
     if( buf[0] != 0x04 )
-        return( MBEDTLS_ERR_ECP_FEATURE_UNAVAILABLE );
+    {
+    	mbedtls_ecp_decompress(grp, buf, _ilen, dec_buf, &dsize, dsize);
+    	_buf = dec_buf;
+    	_ilen = dsize;
+    	//        return( MBEDTLS_ERR_ECP_FEATURE_UNAVAILABLE );
+    }
 
-    if( ilen != 2 * plen + 1 )
+    if( _ilen != 2 * plen + 1 )
         return( MBEDTLS_ERR_ECP_BAD_INPUT_DATA );
 
-    MBEDTLS_MPI_CHK( mbedtls_mpi_read_binary( &pt->X, buf + 1, plen ) );
-    MBEDTLS_MPI_CHK( mbedtls_mpi_read_binary( &pt->Y, buf + 1 + plen, plen ) );
+    MBEDTLS_MPI_CHK( mbedtls_mpi_read_binary( &pt->X, _buf + 1, plen ) );
+    MBEDTLS_MPI_CHK( mbedtls_mpi_read_binary( &pt->Y, _buf + 1 + plen, plen ) );
     MBEDTLS_MPI_CHK( mbedtls_mpi_lset( &pt->Z, 1 ) );
 
 cleanup:
