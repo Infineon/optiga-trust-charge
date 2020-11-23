@@ -37,7 +37,7 @@ The figure below depicts what this solution offers, and what other components of
 ## Get Started
 
 First steps can include the following:
-1. Getting Started Guide for OPTIGA™ Trust Charge. Use one of [OPTIGA™ Trust Charge Evaluation Kits (link is pending)]() and this [guidance](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Getting_Started_Guide_v1.30.pdf) for this
+1. Getting Started Guide for OPTIGA™ Trust Charge. Use one of [OPTIGA™ Trust Charge Evaluation Kits](https://www.infineon.com/cms/en/product/evaluation-boards/optiga-trust-ch-eval-kit/) and this [guidance](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Getting_Started_Guide_v1.30.pdf) for this
 2. Exercise the [Porting Guide](https://github.com/Infineon/optiga-trust-charge/tree/master/pal) to bring this Software Framework to your target Wireless Charging System
 3. Follow a defined process to get unique samples. Please contact for this either your distribution channel or directly Infineon.
 
