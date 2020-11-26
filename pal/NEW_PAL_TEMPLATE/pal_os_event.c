@@ -90,6 +90,7 @@ void pal_os_event_register_callback_oneshot(pal_os_event_t * p_pal_os_event,
     // !!!OPTIGA_LIB_PORTING_REQUIRED
     // User should start the timer here with the 
     // pal_os_event_trigger_registered_callback() function as a callback
+    // Attention. Please don't call directly the callback from here, otherwise you stack migth grow very fast
 }
 
 void pal_os_event_destroy(pal_os_event_t * pal_os_event)
