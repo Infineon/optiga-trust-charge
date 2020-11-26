@@ -9,11 +9,11 @@ The implementation can be found in “<INSTALLDIR>/pal/xmc4800” and the header
 agnostic and would not require any changes. The low level drivers used by PAL for XMC4800 are configured and
 generated using DAVE™.
 
-## Communication with OPTIGA™ Trust Qi
+## Communication with OPTIGA™ Trust Charge
 
 The hardware/platform resource configuration with respect to I2C master and GPIOs (Vdd and Reset) are to be
 updated in pal_ifx_i2c_config.c. These configurations are used by the IFX I2C implementation to communicate
-with OPTIGA™ Trust Qi.
+with OPTIGA™ Trust Charge.
 
 ### Update I2C master platform specific context[e.g. (void)&i2c_master_0]
 
@@ -55,7 +55,7 @@ pal_gpio_t optiga_vdd_0 =
 };
 ```
 
-### Update PAL I2C APIs [pal_i2c.c] to communicate with OPTIGA™ Trust Qi
+### Update PAL I2C APIs [pal_i2c.c] to communicate with OPTIGA™ Trust Charge
 
 The `pal_i2c` is expected to provide the APIs for I2C driver initialization, de-initialization, read, write and set
 bitrate kind of operations
@@ -90,7 +90,7 @@ void i2c_master_end_of_transmit_callback(void)
 In above example the I2C driver callback, when transmission is successful invokes the handler to inform the
 result.
 
-### Update PAL GPIO [pal_gpio.c] to power on and reset the OPTIGA™ Trust Qi
+### Update PAL GPIO [pal_gpio.c] to power on and reset the OPTIGA™ Trust Charge
 
 1. `pal_gpio_set_high`
 2. `pal_gpio_set_low`
@@ -146,7 +146,7 @@ void pal_os_event_trigger_registered_callback(void)
 }
 ```
 
-## Reference code on XMC4800 for communicating with OPTIGA™ Trust Qi
+## Reference code on XMC4800 for communicating with OPTIGA™ Trust Charge
 ```c
 static volatile uint32_t optiga_pal_event_status;
 static void optiga_pal_i2c_event_handler(void* upper_layer_ctx, uint8_t event);
