@@ -332,7 +332,8 @@ int32_t main(void)
 
 ## Port Crypto module for Platfrom Abstraction Layer
 
-The Crypto PAL helps a Host MCU to perfrom shielded communication (protected Infineon I2C protocol) between the Host and the Trust Qi
+The Crypto PAL helps a Host MCU to perfrom shielded communication (protected Infineon I2C protocol) between the Host and the Trust Charge
+
 If you don't use shielded connection you can skip this module
 
 Currently three Crypto PALs are supported via third-party libraries (should be provided at compilation/linking time)
