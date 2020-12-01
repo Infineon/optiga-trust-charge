@@ -8,7 +8,7 @@
 
 To port the Software Framework on you Host platfrom please follow the guidance below. As a basis for your new PAL implementation, you can take this [template](NEW_PAL_TEMPLATE)
 
-**Note: If you have a strict requirements on type of memmory allocation, consider changing pal_os_malloc(), pal_os_calloc(), pal_os_free() functions in the [pal_os_memory.h](https://github.com/Infineon/optiga-trust-qi/blob/master/optiga/include/optiga/pal/pal_os_memory.h) file**
+**Note: If you have a strict requirements on type of memmory allocation, consider changing pal_os_malloc(), pal_os_calloc(), pal_os_free() functions in the [pal_os_memory.h](https://github.com/Infineon/optiga-trust-charge/blob/master/optiga/include/optiga/pal/pal_os_memory.h) file**
 
 The implementation of Platform Abstraction Layer (PAL) needs to be updated in order to migrate to a new
 target platform.
