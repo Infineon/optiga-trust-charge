@@ -15,18 +15,19 @@ For all measurements optimization level "-Os" has been selected. The setup witho
   </tr>
   <tr>
     <td class="tg-c3ow" rowspan="4">OPTIGA™ Trust Charge hostlib</td>
-    <td class="tg-0pky" rowspan="4">min: 11.6/2.9 </br> max: 23.8/11.5 <sup>2</sup></td>
+    <td class="tg-0pky" rowspan="4">min: 13.4/2.9 </br> max: 25.6/11.5 <sup>2</sup></td>
     <td class="tg-0pky">Core Functions</td>
-    <td class="tg-0pky">2.7</td>
-    <td class="tg-0pky" rowspan="3">2.9</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ECC; Protected Update; RND </td>
-    <td class="tg-0pky">5.2</td>
+    <td class="tg-0pky">8.4</td>
+    <td class="tg-0pky" rowspan="2">2.9</td>
   </tr>
   <tr>
     <td class="tg-0pky">Infineon I2C protocol</td>
     <td class="tg-0pky">3.7</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">WPC Qi AppNote </td>
+    <td class="tg-0pky">1.3</td>
+  <td class="tg-0pky">~0</td>
   </tr>
   <tr>
     <td class="tg-0pky">(optional) Shielded Connection + 3rd party crypto</td>
