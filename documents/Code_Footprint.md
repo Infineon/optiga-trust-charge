@@ -42,7 +42,19 @@ For all measurements optimization level "-Os" has been selected. The setup witho
 
 ## How to optimize
 
-The Software Framework offers a way to optimize the final code footprint depending on the use case. Below are the security chip features which you might want to control (the features of the chip itself aren't blocked, inmaster/code is compiled excluding/including selected options).
+Decrease ammount of maximum context (for usage in parallel). Find it [here](https://github.com/Infineon/optiga-trust-charge/blob/36b24764f328c6782caa8ecd6ddefe8b6f5c667c/optiga/include/optiga/optiga_lib_config.h#L65)
+```c
+#define OPTIGA_CMD_MAX_REGISTRATIONS                (0x06)
+```
+
+Decrese maxmum communicaiton buffer size. Find it [here](https://github.com/Infineon/optiga-trust-charge/blob/36b24764f328c6782caa8ecd6ddefe8b6f5c667c/optiga/include/optiga/optiga_lib_config.h#L67)
+```c
+#define OPTIGA_MAX_COMMS_BUFFER_SIZE                (0x615) //1557 in decimal
+```
+
+The size (-Os) optimisation
+
+Also...
 
 ## Shielded Communication
 
