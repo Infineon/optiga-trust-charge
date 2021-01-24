@@ -64,14 +64,14 @@ extern "C" {
     /** @brief Maximum number of instance registration */
     #define OPTIGA_CMD_MAX_REGISTRATIONS                (0x06)
     /** @brief Maximum buffer size required to communicate with OPTIGA */
-    #define OPTIGA_MAX_COMMS_BUFFER_SIZE                (0x615) //1557 in decimal
+    #define OPTIGA_MAX_COMMS_BUFFER_SIZE                (0x400) //1024 in decimal
 
     /** @brief Macro to enable logger \n
     * Enable macro OPTIGA_LIB_ENABLE_UTIL_LOGGING for Util Service layer logging     \n
     * Enable macro OPTIGA_LIB_ENABLE_CRYPT_LOGGING for Crypt Service layer logging     \n
     * Enable macro OPTIGA_LIB_ENABLE_CMD_LOGGING for Command layer logging     \n
     * Enable macro OPTIGA_LIB_ENABLE_COMMS_LOGGING for Communication layer logging     */
-    #define OPTIGA_LIB_ENABLE_LOGGING
+    //#define OPTIGA_LIB_ENABLE_LOGGING
     /** @brief Enable macro OPTIGA_PAL_INIT_ENABLED for calling pal_init functionality */
     #define OPTIGA_PAL_INIT_ENABLED
 /// @cond
