@@ -41,14 +41,14 @@
 /* OPTIGA includes */
 #include "optiga/pal/pal.h"
 
-/* OPTIGA Trust Qi slave address */
+/* OPTIGA Trust Charge slave address */
 #ifndef CONFIG_TRUSTM_I2C_ADDR
     #define I2C_OPTIGA_ADDR  0x30
 #else
     #define I2C_OPTIGA_ADDR  CONFIG_TRUSTM_I2C_ADDR
 #endif
 
-/* I2C PORT to which OPTIGA Trust Qi is connected */
+/* I2C PORT to which OPTIGA Trust Charge is connected */
 #ifndef CONFIG_TRUSTM_I2C_PORT_NAME
     #define I2C_PORT_NAME   DT_ALIAS_I2C_0_LABEL
 #else

@@ -108,7 +108,7 @@
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT`  Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
 	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code.
-	    * Refer to the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	    * Refer to the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  N/A
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
@@ -139,7 +139,7 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  N/A
 * **Notes:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
@@ -172,7 +172,7 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  Refer to the [example_optiga_util_read_data.c](../blob/master/examples/optiga/example_optiga_util_read_data.c)
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
@@ -205,12 +205,12 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  Refer to the [example_optiga_util_read_data.c](../blob/master/examples/optiga/example_optiga_util_read_data.c)
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
     * Error codes from lower layers will be returned as it is.
-    * The metadata returned will be in TLV format (See [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)).
+    * The metadata returned will be in TLV format (See [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)).
     * The maximum value of the **length** parameter  must be the size of **buffer**. In case the value is greater than buffer size, memory corruption can occur.
 
 [Top](#top)
@@ -244,7 +244,7 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  Refer to the [example_optiga_util_write_data.c](../blob/master/examples/optiga/example_optiga_util_write_data.c)
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
@@ -276,13 +276,13 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  Refer to the [example_optiga_util_write_data.c](../blob/master/examples/optiga/example_optiga_util_write_data.c)
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
     * Error codes from lower layers will be returned as it is.
     * The maximum value of the **length** parameter is size of **buffer**. In case the value is greater than buffer size, incorrect values can get written into the data object in OPTIGA.
-    * The metadata to be written must be in TLV format (See [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)).
+    * The metadata to be written must be in TLV format (See [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)).
 
 [Top](#top)
 
@@ -309,7 +309,7 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  Refer to the [example_optiga_util_protected_update.c](../blob/master/examples/optiga/example_optiga_util_protected_update.c)
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
@@ -343,7 +343,7 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  Refer to the [example_optiga_util_protected_update.c](../blob/master/examples/optiga/example_optiga_util_protected_update.c)
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
@@ -379,7 +379,7 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  Refer to the [example_optiga_util_protected_update.c](../blob/master/examples/optiga/example_optiga_util_protected_update.c)
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)
@@ -410,7 +410,7 @@
 	* `OPTIGA_CRYPT_SUCCESS` Successful invocation.
 	* `OPTIGA_CRYPT_ERROR_INVALID_INPUT` Wrong Input arguments provided.
 	* `OPTIGA_CRYPT_ERROR_INSTANCE_IN_USE` The previous operation with the same instance is not complete.
-	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Qi_V1_Solution_Reference_Manual_v1.00.pdf)
+	* `OPTIGA_DEVICE_ERROR` Command execution failure in OPTIGA and the LSB indicates the error code. Refer to the the [Solution Reference Manual](../raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf)
 * **Example:**  Refer to the [example_optiga_util_update_count.c](../blob/master/examples/optiga/example_optiga_util_update_count.c)
 * **Note:**
     * For **protected I2C communication**, Refer to [OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL](#OPTIGA_CRYPT_SET_COMMS_PROTECTION_LEVEL)

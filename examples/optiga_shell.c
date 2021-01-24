@@ -256,7 +256,7 @@ static void optiga_shell_util_protected_update(void)
 {
     OPTIGA_SHELL_LOG_MESSAGE("Starting Protected Update Example");
     OPTIGA_SHELL_LOG_MESSAGE("1 Step: Update Metadata for the Object to be updated and the Trust Anchor used to verify the update");
-    OPTIGA_SHELL_LOG_MESSAGE("2 Step: Write Trust Anchor used by the Trust Qi to verify the update");
+    OPTIGA_SHELL_LOG_MESSAGE("2 Step: Write Trust Anchor used by the Trust Charge to verify the update");
     OPTIGA_SHELL_LOG_MESSAGE("3 Step: Start Protected update with prepared manifest and fragments");
     example_optiga_util_protected_update();
 }

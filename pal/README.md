@@ -8,7 +8,7 @@
 
 To port the Software Framework on you Host platfrom please follow the guidance below. As a basis for your new PAL implementation, you can take this [template](NEW_PAL_TEMPLATE)
 
-**Note: If you have a strict requirements on type of memmory allocation, consider changing pal_os_malloc(), pal_os_calloc(), pal_os_free() functions in the [pal_os_memory.h](https://github.com/Infineon/optiga-trust-qi/blob/master/optiga/include/optiga/pal/pal_os_memory.h) file**
+**Note: If you have a strict requirements on type of memmory allocation, consider changing pal_os_malloc(), pal_os_calloc(), pal_os_free() functions in the [pal_os_memory.h](https://github.com/Infineon/optiga-trust-charge/blob/master/optiga/include/optiga/pal/pal_os_memory.h) file**
 
 The implementation of Platform Abstraction Layer (PAL) needs to be updated in order to migrate to a new
 target platform.
@@ -332,7 +332,8 @@ int32_t main(void)
 
 ## Port Crypto module for Platfrom Abstraction Layer
 
-The Crypto PAL helps a Host MCU to perfrom shielded communication (protected Infineon I2C protocol) between the Host and the Trust Qi
+The Crypto PAL helps a Host MCU to perfrom shielded communication (protected Infineon I2C protocol) between the Host and the Trust Charge
+
 If you don't use shielded connection you can skip this module
 
 Currently three Crypto PALs are supported via third-party libraries (should be provided at compilation/linking time)

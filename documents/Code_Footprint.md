@@ -15,18 +15,19 @@ For all measurements optimization level "-Os" has been selected. The setup witho
   </tr>
   <tr>
     <td class="tg-c3ow" rowspan="4">OPTIGA™ Trust Charge hostlib</td>
-    <td class="tg-0pky" rowspan="4">min: 11.6/2.9 </br> max: 23.8/11.5 <sup>2</sup></td>
+    <td class="tg-0pky" rowspan="4">min: 13.4/2.9 </br> max: 25.6/11.5 <sup>2</sup></td>
     <td class="tg-0pky">Core Functions</td>
-    <td class="tg-0pky">2.7</td>
-    <td class="tg-0pky" rowspan="3">2.9</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">ECC; Protected Update; RND </td>
-    <td class="tg-0pky">5.2</td>
+    <td class="tg-0pky">8.4</td>
+    <td class="tg-0pky" rowspan="2">2.9</td>
   </tr>
   <tr>
     <td class="tg-0pky">Infineon I2C protocol</td>
     <td class="tg-0pky">3.7</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">WPC Qi AppNote </td>
+    <td class="tg-0pky">1.3</td>
+  <td class="tg-0pky">~0</td>
   </tr>
   <tr>
     <td class="tg-0pky">(optional) Shielded Connection + 3rd party crypto</td>
@@ -41,7 +42,19 @@ For all measurements optimization level "-Os" has been selected. The setup witho
 
 ## How to optimize
 
-The Software Framework offers a way to optimize the final code footprint depending on the use case. Below are the security chip features which you might want to control (the features of the chip itself aren't blocked, inmaster/code is compiled excluding/including selected options).
+Decrease ammount of maximum context (for usage in parallel). Find it [here](https://github.com/Infineon/optiga-trust-charge/blob/36b24764f328c6782caa8ecd6ddefe8b6f5c667c/optiga/include/optiga/optiga_lib_config.h#L65)
+```c
+#define OPTIGA_CMD_MAX_REGISTRATIONS                (0x06)
+```
+
+Decrese maxmum communicaiton buffer size. Find it [here](https://github.com/Infineon/optiga-trust-charge/blob/36b24764f328c6782caa8ecd6ddefe8b6f5c667c/optiga/include/optiga/optiga_lib_config.h#L67)
+```c
+#define OPTIGA_MAX_COMMS_BUFFER_SIZE                (0x615) //1557 in decimal
+```
+
+The size (-Os) optimisation
+
+Also...
 
 ## Shielded Communication
 
