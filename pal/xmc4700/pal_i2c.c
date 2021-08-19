@@ -39,6 +39,10 @@
 
 #include <DAVE.h>
 #include "optiga/pal/pal_i2c.h"
+//#include "optiga/common/optiga_lib_logger.h"
+//
+//uint8_t *rx_buf_ptr = NULL;
+//uint16_t rx_buf_size = 0;
 
 //#define PAL_I2C_MASTER_MAX_BITRATE  (400U)
 /// @cond hidden
@@ -88,6 +92,10 @@ void i2c_master_end_of_transmit_callback(void)
 void i2c_master_end_of_receive_callback(void)
 {
     invoke_upper_layer_callback(gp_pal_i2c_current_ctx, PAL_I2C_EVENT_SUCCESS);
+//    char buffer[30];
+//    sprintf(buffer, "[IFX-HAL]: I2C RX (%d): ", rx_buf_size);
+//    optiga_lib_print_string_with_newline(buffer);
+//    optiga_lib_print_array_hex_format(rx_buf_ptr, rx_buf_size, OPTIGA_LIB_LOGGER_COLOR_GREEN);
 }
 
 void i2c_master_error_detected_callback(void)
@@ -171,6 +179,11 @@ pal_status_t pal_i2c_write(const pal_i2c_t * p_i2c_context, uint8_t * p_data, ui
                                                         (p_i2c_context->p_upper_layer_ctx , PAL_I2C_EVENT_BUSY);
     }
     
+//    char buffer[30];
+//    sprintf(buffer, "[IFX-HAL]: I2C TX (%d): ", length);
+//    optiga_lib_print_string_with_newline(buffer);
+//    optiga_lib_print_array_hex_format(p_data, length, OPTIGA_LIB_LOGGER_COLOR_BLUE);
+
     return status;
 }
 
@@ -203,6 +216,8 @@ pal_status_t pal_i2c_read(const pal_i2c_t * p_i2c_context, uint8_t * p_data, uin
         }
         else
         {
+//        	rx_buf_ptr = p_data;
+//			rx_buf_size = length;
             status = PAL_STATUS_SUCCESS;
         }
     }
@@ -213,7 +228,7 @@ pal_status_t pal_i2c_read(const pal_i2c_t * p_i2c_context, uint8_t * p_data, uin
         ((upper_layer_callback_t)(p_i2c_context->upper_layer_event_handler))
                                                         (p_i2c_context->p_upper_layer_ctx , PAL_I2C_EVENT_BUSY);
     }
-    
+
     return status;
 }
 
