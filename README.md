@@ -9,9 +9,9 @@
 
 Infineon’s OPTIGA™ Trust Charge is a turnkey solution providing secured device authentication for inductive wireless charging.
 
-The main purpose of this software framework is to support an integration of the secure element into a target wireless charging system.
+The main purpose of this software framework is to support an integration of the secure element into a target wireless charging system. Be aware that this software comes without any security claims and shall be used for evaluation purpose.
 
-The figure below depicts what this solution offers, and what other components of the wireless charging system are required.
+The figure below depicts what this solution offers, and what other components of the wireless charging system are required. 
 
 ![](https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_charge_integration_overview.png)
 
