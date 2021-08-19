@@ -64,7 +64,7 @@ extern "C" {
     /** @brief Maximum number of instance registration */
     #define OPTIGA_CMD_MAX_REGISTRATIONS                (0x06)
     /** @brief Maximum buffer size required to communicate with OPTIGA */
-    #define OPTIGA_MAX_COMMS_BUFFER_SIZE                (0x400) //1024 in decimal
+    #define OPTIGA_MAX_COMMS_BUFFER_SIZE                (0x258) //1024 in decimal
 
     /** @brief Macro to enable logger \n
     * Enable macro OPTIGA_LIB_ENABLE_UTIL_LOGGING for Util Service layer logging     \n
@@ -101,7 +101,7 @@ extern "C" {
      *         Warm Reset - (2) : This is applicable if the host platform doesn't have GPIO option for VDD. \n
      *         Any other value will lead to error
      */
-    #define OPTIGA_COMMS_DEFAULT_RESET_TYPE     (0U)
+    #define OPTIGA_COMMS_DEFAULT_RESET_TYPE     (1U)
 
 
 
