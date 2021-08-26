@@ -811,7 +811,7 @@ void pal_os_event_trigger_registered_callback(void)
 
 
 void pal_os_event_register_callback_oneshot(pal_os_event_t * p_pal_os_event,
-											register_callback callback,
+                                            register_callback callback,
                                             void* callback_args,
                                             uint32_t time_us)
 {
