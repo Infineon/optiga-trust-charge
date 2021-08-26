@@ -1,8 +1,10 @@
 # Porting guide
 
-1. [Port Platfrom Abstraction Layer](#Port-Platfrom-Abstraction-Layer)
+1. [Port Platfrom Abstraction Layer](#port-platfrom-abstraction-layer)
 2. [Initialisation Flow](#initialisation-flow)
-3. [Port Crypto module for Platfrom Abstraction Layer](#Port-Crypto-module-for-Platfrom-Abstraction-Layer)
+3. [Port Crypto module for Platfrom Abstraction Layer](#port-crypto-module-for-platfrom-abstraction-layer)
+4. [Port Event module for Platform Abstraction Layer](#port-event-module-for-platform-abstraction-layer)
+  * [No timer callbacks are possible, what to do?](#no-timer-callbacks-are-possible-what-to-do)  
 
 ## Port Platfrom Abstraction Layer
 
@@ -716,3 +718,160 @@ static int32_t testAES128CCMDecrypt(void)
 }
 ```
 </details>
+
+
+## Port Event module for Platform Abstraction Layer
+
+To better port the pal_os_event.c file to the target platform it is important to udnerstand how the OPTIGA finites state machine makes use of it. Below is the pseudo code which should help in that. 
+
+File `pseudo_code_optiga.c`:
+
+```c
+    optiga_finite_state_machine_callback()
+    {
+        optiga_function_send_or_receive_one_i2c_frame()
+        pal_os_event_register_callback_oneshot(for_example_1000usec, optiga_finite_state_machine_callback, some_arguments)
+    }
+```
+
+
+File `target_pal_os_event.c`:
+
+```c
+    pal_os_event_register_callback_oneshot(usec_delay, callback, callback_args)
+    {
+        target_interrupt_service_routine_for_timers_set_callback(usec_delay, pal_os_event_trigger_registered_callback)
+        pal_os_event_0.callback_registered = callback;
+        pal_os_event_0.callback_ctx = callback_args;
+    }
+
+
+    pal_os_event_trigger_registered_callback()
+    {
+        register_callback callback;
+
+        if (pal_os_event_0.callback_registered)
+        {
+            callback = pal_os_event_0.callback_registered;
+            // From this place the optiga_finite_state_machine_callback() will be called again do its job and call the pal_os_event_register_callback_oneshot once again to do a next portion of the job
+            callback((void * )pal_os_event_0.callback_ctx); 
+        }
+
+    }
+
+```
+
+so the sequence to send and receive multiple I2C Frames would be the following:
+
+```
+|Pseudo timestamp in usec | Function                                                                                                          |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------|
+|         0               | optiga_finite_state_machine_callback()                                                                            |
+|         1               |   optiga_function_send_one_i2c_frame()                                                                            |
+|         11              |   pal_os_event_register_callback_oneshot(1000, optiga_finite_state_machine_callback, NULL)                        |
+|         12              |     target_interrupt_service_routine_for_timers_set_callback(1000, pal_os_event_trigger_registered_callback)      |
+|         ...             |     ...                                                                                                           |
+|         1012            | target_interrupt_service_routine_for_timers()                                                                     |
+|         1013            |   pal_os_event_trigger_registered_callback()                                                                      | 
+|         1014            |     optiga_finite_state_machine_callback()                                                                        |
+|         1015            |       optiga_function_receive_one_i2c_frame()                                                                     |
+|         1016            |       pal_os_event_register_callback_oneshot(1000, optiga_finite_state_machine_callback, NULL)                    |
+|         1017            |         target_interrupt_service_routine_for_timers_set_callback(1000, pal_os_event_trigger_registered_callback)  |
+|         ...             |     ...                                                                                                           |
+|         2017            | target_interrupt_service_routine_for_timers()                                                                     |
+|         2018            |   pal_os_event_trigger_registered_callback()                                                                      | 
+|         2019            |     optiga_finite_state_machine_callback()                                                                        |
+|         2020            |       optiga_function_send_one_i2c_frame()                                                                        |
+|         2021            |       pal_os_event_register_callback_oneshot(1000, optiga_finite_state_machine_callback, NULL)                    |
+```
+and so one and so forth
+
+
+### No timer callbacks are possible, what to do?
+
+Sometimes timer callbacks are not available or for instance it is not allowed to call functions from an interrupt service routine (like timestamp 1013, 2018 from the table above).
+In this case there is a possibility to move the finiste statemachine still. But it requires some modifications.
+
+Below is a pseudo implementation for the `target_pal_os_event.c`, please note that not all functions are shown to save space on the screen:
+
+```c
+static uint32_t pal_os_ts_0 = 0;
+
+void pal_os_event_trigger_registered_callback(void)
+{
+    register_callback callback;
+
+    if ((pal_os_ts_0 != 0) && (pal_os_ts_0 < target_function_to_return_system_clock_in_usecs()()) && pal_os_event_0.callback_registered)
+    {
+    	pal_os_ts_0 = 0;
+		callback = pal_os_event_0.callback_registered;
+		callback((void * )pal_os_event_0.callback_ctx);
+    }
+}
+
+
+void pal_os_event_register_callback_oneshot(pal_os_event_t * p_pal_os_event,
+											register_callback callback,
+                                            void* callback_args,
+                                            uint32_t time_us)
+{
+	pal_os_event_0.callback_registered = callback;
+	pal_os_event_0.callback_ctx = callback_args;
+
+	pal_os_ts_0 = target_function_to_return_system_clock_in_usecs() + time_us;
+}
+
+```
+
+Now we need to regularly poll the pal_os_event_trigger_registered_callback() to ensure that the optiga finite state machine moves forward. 
+This can be done in many different ways, for example the implementation of the `qi_auth_ptx_crypt_wocmd.c` file can be changed as following:
+
+```c
+int transceive_to_chip( optiga_comms_t * p_comms,
+                        const uint8_t * p_tx_data,
+                        uint16_t tx_data_length,
+                        uint8_t * p_rx_data,
+                        uint16_t * p_rx_data_len)
+{
+    // transceive data to chip using comms tranceive
+    optiga_comms_status = OPTIGA_COMMS_BUSY;
+    if(OPTIGA_COMMS_SUCCESS != optiga_comms_transceive(p_comms, p_tx_data, tx_data_length, p_rx_data ,p_rx_data_len))
+    {
+        return CRYPT_LIB_ERROR;
+    }
+    //async wait
+    while(OPTIGA_COMMS_SUCCESS != optiga_comms_status)
+    {
+        pal_os_event_trigger_registered_callback();
+    };
+
+    return 0;
+}
+```
+
+if you don't use a reduced PTx implementation, the polling can be integrated differently, for instance in the file `qi_auth_ptx_crypt.c`:
+
+```c
+
+#define WAIT_FOR_COMPLETION(ret) \
+    if (OPTIGA_LIB_SUCCESS != ret)\
+    {\
+        break;\
+    }\
+    while (optiga_lib_status == OPTIGA_LIB_BUSY) \
+    {\
+        pal_os_event_trigger_registered_callback();\
+    } \
+    \
+    if (OPTIGA_LIB_SUCCESS != optiga_lib_status)\
+    { \
+            ret = optiga_lib_status;\
+            /*printf("Error: 0x%02X \r\n", optiga_lib_status);*/ \
+            optiga_util_destroy(p_util);\
+            optiga_crypt_destroy(p_crypt);\
+            pal_os_event_destroy(NULL);\
+            break; \
+    }
+#endif
+
+```
