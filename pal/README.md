@@ -790,7 +790,7 @@ and so one and so forth
 ### No timer callbacks are possible, what to do?
 
 Sometimes timer callbacks are not available or for instance it is not allowed to call functions from an interrupt service routine (like timestamp 1013, 2018 from the table above).
-In this case there is a possibility to move the finiste statemachine still. But it requires some modifications.
+In this case there is a possibility to move the finite state machine still. But it requires some modifications.
 
 Below is a pseudo implementation for the `target_pal_os_event.c`, please note that not all functions are shown to save space on the screen:
 
