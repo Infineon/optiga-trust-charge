@@ -803,9 +803,9 @@ void pal_os_event_trigger_registered_callback(void)
 
     if ((pal_os_ts_0 != 0) && (pal_os_ts_0 < target_function_to_return_system_clock_in_usecs()()) && pal_os_event_0.callback_registered)
     {
-    	pal_os_ts_0 = 0;
-		callback = pal_os_event_0.callback_registered;
-		callback((void * )pal_os_event_0.callback_ctx);
+        pal_os_ts_0 = 0;
+        callback = pal_os_event_0.callback_registered;
+        callback((void * )pal_os_event_0.callback_ctx);
     }
 }
 
