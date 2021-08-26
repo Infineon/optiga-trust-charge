@@ -4,7 +4,7 @@
 2. [Initialisation Flow](#initialisation-flow)
 3. [Port Crypto module for Platfrom Abstraction Layer](#port-crypto-module-for-platfrom-abstraction-layer)
 4. [Port Event module for Platform Abstraction Layer](#port-event-module-for-platform-abstraction-layer)
-  * [No timer callbacks are possible, what to do?](#no-timer-callbacks-are-possible-what-to-do)  
+    * [No timer callbacks are possible, what to do?](#no-timer-callbacks-are-possible-what-to-do)  
 
 ## Port Platfrom Abstraction Layer
 
