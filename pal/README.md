@@ -840,7 +840,7 @@ int transceive_to_chip( optiga_comms_t * p_comms,
         return CRYPT_LIB_ERROR;
     }
     //async wait
-    while(OPTIGA_COMMS_SUCCESS != optiga_comms_status)
+    while(optiga_lib_status == OPTIGA_LIB_BUSY)
     {
         pal_os_event_trigger_registered_callback();
     };
