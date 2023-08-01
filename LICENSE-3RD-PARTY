@@ -2,7 +2,7 @@
 
 LUFA (Lightweight USB Framework for AVRs) project
     Version: LUFA-140302
-    Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+    Copyright 2014  Dean Camera (dean [at] fourwalledcubicle [dot] com)
     Source:
     * http://www.fourwalledcubicle.com/LUFA.php
     * https://github.com/abcminiuser/lufa
@@ -10,7 +10,7 @@ LUFA (Lightweight USB Framework for AVRs) project
 
 mbedTLS
     Version: 2.16.0
-    Copyright 2014  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+    Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
     Source:
     * https://github.com/Mbed-TLS/mbedtls
     LICENSE: Apache-2.0
