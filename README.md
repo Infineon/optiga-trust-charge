@@ -9,9 +9,9 @@
 
 Infineon’s OPTIGA™ Trust Charge is a turnkey solution providing secured device authentication for inductive wireless charging.
 
-The main purpose of this software framework is to support an integration of the secure element into a target wireless charging system. Be aware that this software comes without any security claims and shall be used for evaluation purpose.
+The main purpose of this software framework is to support the integration of the OPTIGA™ Trust Charge solution into a target wireless charging system. Be aware that this software comes without any warranty claims and shall be used for evaluation purposes.
 
-The figure below depicts what this solution offers, and what other components of the wireless charging system are required. 
+The figure below shows the offering of this solution and other third party components needed to build a wireless charging system. 
 
 ![](https://github.com/Infineon/Assets/blob/master/Pictures/optiga_trust_charge_integration_overview.png)
 
@@ -34,19 +34,19 @@ The figure below depicts what this solution offers, and what other components of
 * Hibernate for zero power consumption
 * Lifetime for Industrial Automation and Infrastructure is 20 years and 15 years for other Application Profiles
 
-## Get Started
+## Getting Started
 
-First steps can include the following:
-1. Getting Started Guide for OPTIGA™ Trust Charge. Use one of [OPTIGA™ Trust Charge Evaluation Kits](https://www.infineon.com/cms/en/product/evaluation-boards/optiga-trust-ch-eval-kit/) and this [guidance](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Getting_Started_Guide_v1.30.pdf) for this
-2. Exercise the [Porting Guide](https://github.com/Infineon/optiga-trust-charge/tree/master/pal) to bring this Software Framework to your target Wireless Charging System
-3. You can also try out our WPC Qi 1.3 Application Note from [here](https://github.com/Infineon/wpcqi-optiga-trust-charge)
-4. Follow a defined process to get unique samples. Please contact for this either your distribution channel or directly Infineon.
+The following steps will support in familiarizing with this software framework and adapting it to your target system:
+1. Get in touch with this software framework by going through the [Getting Started Guide for OPTIGA™ Trust Charge](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Getting_Started_Guide_v1.30.pdf) while using one of the [OPTIGA™ Trust Charge Evaluation Kits](https://www.infineon.com/cms/en/product/evaluation-boards/optiga-trust-ch-eval-kit/).
+2. Follow the [Porting Guide](https://github.com/Infineon/optiga-trust-charge/tree/master/pal) to bring this software framework to your target Wireless Charging System.
+3. Also have a look at our [WPC Qi 1.3 Application Note](https://github.com/Infineon/wpcqi-optiga-trust-charge).
+4. To order engineering samples with your unique configuration, please contact your distribution partner or Infineon representative.
 
 ## Documentation
 
-For high level description and some important excerpts from the documentation please refer to [documents](documents)
+For a high level description and some important excerpts from the documentation please refer to [documents](documents)
 
-Most frequently used documents in PDF can be found below:
+The most frequently used documents in PDF can be found below:
 1. [OPTIGA™ Trust Charge Datasheet v1.30](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Datasheet_v1.30.pdf) (PDF)
 2. [OPTIGA™ Trust Charge Solution Reference Manual v1.00](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf) (PDF)
 4. [Infineon I2C protocol specification v2.02](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/Infineon_I2C_Protocol_v2.02.pdf) (PDF)
@@ -114,13 +114,19 @@ I2C Fast Mode (400KHz)
 
 <sup>1</sup> Minimum Execution of the entire sequence in milliseconds, except the External World timings
 
-### Board assembly recommendations
-
-If you are planning to integrate OPTIGA™ Trust Charge in your PCB design have a look at the recommendations found [here (external, opens in the same tab)](https://www.infineon.com/dgdl/Infineon-Recommendations_for_Board_Assembly_xQFN-P-v01_00-EN.pdf?fileId=5546d462580663ef015806ab383a05bf).
-
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 3rd party software
+
+This project uses the following projects:
+* mbedTLS - An open source, portable, easy to use, readable and flexible TLS library
+* LUFA - Lightweight USB Framework for AVRs
+* CMSIS MPU API for Armv7-M MPU
+* STROMX - A library for near real time processing of images with a focus on industrial applications
+
+For more information on the relevant licenses, please see [LICENSE-3RD-PARTY](LICENSE-3RD-PARTY).
