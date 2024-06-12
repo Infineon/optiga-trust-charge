@@ -47,7 +47,7 @@ The following steps will support in familiarizing with this software framework a
 For a high level description and some important excerpts from the documentation please refer to [documents](documents)
 
 The most frequently used documents in PDF can be found below:
-1. [OPTIGA™ Trust Charge Datasheet v1.30](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Datasheet_v1.30.pdf) (PDF)
+1. [OPTIGA™ Trust Charge Datasheet v1.5](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Datasheet_v1.5.pdf) (PDF)
 2. [OPTIGA™ Trust Charge Solution Reference Manual v1.00](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Solution_Reference_Manual_v1.00.pdf) (PDF)
 4. [Infineon I2C protocol specification v2.02](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/Infineon_I2C_Protocol_v2.02.pdf) (PDF)
 

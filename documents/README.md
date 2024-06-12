@@ -2,7 +2,7 @@
 
 * **[Infineon_I2C_Protocol_v2.02.pdf](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/Infineon_I2C_Protocol_v2.02.pdf)** - Infineon I2C protocol specification. In this document you can find all information related to the communication protocol between a Host MCU and the Secure Element, for instance how shielded connection works.
 * **[License.pdf](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/License.pdf)** - MIT License
-* **[OPTIGA_Trust_Charge_V1_Datasheet_v1.30.pdf](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Datasheet_v1.30.pdf)** - Datasheet for the OPTIGA Trust M revision 1 product. This is a high level description of the hardware side of the product. You can find there the following information, though not limited to
+* **[OPTIGA_Trust_Charge_V1_Datasheet_v1.5.pdf](https://github.com/Infineon/optiga-trust-charge/raw/master/documents/OPTIGA_Trust_Charge_V1_Datasheet_v1.5.pdf)** - Datasheet for the OPTIGA Trust M revision 1 product. This is a high level description of the hardware side of the product. You can find there the following information, though not limited to
     * Electrical Characteristics
     * Crypto Performance
     * Hardware integration guide including a reference schematics
